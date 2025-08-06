@@ -78,7 +78,7 @@ sghss/
 ### Passos:
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/sghss.git
+git clone https://github.com/marxleninberg/sghss.git
 
 # 2. Entre na pasta do projeto
 cd sghss
@@ -87,7 +87,7 @@ cd sghss
 docker-compose up -d
 
 # 4. Rode o sistema com sua IDE ou via terminal
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 
 Acesse: `http://localhost:8080`
