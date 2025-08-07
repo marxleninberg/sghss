@@ -48,22 +48,17 @@ O projeto está organizado em uma estrutura em camadas, conforme abaixo:
 
 ```
 sghss/
-├── src/
-│   └── main/
-│       └── java/
-│           └── com/
-│               └── sghss/
-│                   ├── config/       → Configurações de segurança e filtros JWT
-│                   ├── controller/   → Endpoints da aplicação (REST)
-│                   ├── service/      → Regras de negócio
-│                   ├── repository/   → Interfaces de acesso ao banco de dados (JPA)
-│                   ├── entity/       → Entidades mapeadas
-│                   └── dto/          → Objetos de transferência de dados (entrada/saída)
-├── src/
-│   └── main/
-│       └── resources/                → Arquivos de configuração (application.properties, etc.)
-├── pom.xml                           → Gerenciador de dependências do Maven
-└── README.md                         → Documentação do projeto
+├── src/main/java/com/sghss/
+│   ├── config/           → Configurações de segurança e filtros JWT
+│   ├── controllers/      → Endpoints da aplicação (REST)
+│   ├── services/         → Regras de negócio
+│   ├── repositories/     → Interfaces de acesso ao banco de dados (JPA)
+│   ├── entities/         → Entidades mapeadas
+│   └── dtos/             → Objetos de transferência de dados (entrada/saída)
+├── src/main/
+│   └── resources/        → Arquivos de configuração (application.properties, etc.)
+├── pom.xml               → Gerenciador de dependências do Maven
+└── README.md             → Documentação do projeto
 ```
 
 ---
@@ -91,6 +86,34 @@ mvn spring-boot:run
 ```
 
 Acesse: `http://localhost:8080`
+
+---
+
+## 📨 Endpoints da API
+
+### 🔐 Autenticação
+- `POST /login` → Geração de token JWT
+- `POST /public/cadastro` → Cadastro público de paciente
+
+### 👤 Usuários
+- `POST /usuarios` → Criar novo usuário (admin)
+- `POST /usuarios/profissional` → Criar novo profissional da saúde (admin)
+
+### 👥 Pacientes
+- `GET /pacientes` → Listar todos os pacientes (admin)
+- `GET /pacientes/{id}` → Buscar paciente por ID (admin)
+- `DELETE /pacientes/{id}` → Remover paciente (admin)
+
+### 📅 Consultas
+- `GET /consultas` → Listar consultas do usuário (PACIENTE ou PROFISSIONAL)
+- `POST /consultas` → Agendar nova consulta (PACIENTE)
+- `PUT /consultas/{id}` → Reagendar consulta (PACIENTE)
+- `PUT /consultas/cancelar/{id}` → Cancelar consulta (PACIENTE)
+- `DELETE /consultas/{id}` → Excluir consulta (admin)
+- `GET /consultas/relatorio` → Gerar relatório de atendimentos (PROFISSIONAL)
+
+### 📋 Logs e Ações
+- `GET /logs/exportar` → Exportar log de ações (admin)
 
 ---
 
